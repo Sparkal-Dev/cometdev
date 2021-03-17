@@ -44,7 +44,7 @@
                             </div>
                             <!-- /Social Login -->
 
-                            <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div>
+                            <div class="text-center dont-have">Don’t have an account? <a href="{{ route('admin.register') }}">Register</a></div>
                         </div>
                     </div>
                 </div>

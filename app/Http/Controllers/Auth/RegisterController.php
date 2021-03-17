@@ -72,7 +72,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
-            'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -95,7 +94,7 @@ class RegisterController extends Controller
         Notification::send($user, new AccountConfirmationNotification($user));
 
         Auth::logout();
-        return redirect() -> route('login');
+        return redirect() -> route('admin.login');
 
     }
 

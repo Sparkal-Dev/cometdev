@@ -17,18 +17,22 @@
                             <p class="account-subtitle">Access to our dashboard</p>
 
                             <!-- Form -->
-                            <form action="https://dreamguys.co.in/demo/doccure/admin/login.html">
+                            <form action="{{ route('admin.register') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Name">
+                                    <input name="name" class="form-control" type="text" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Email">
+                                    <input name="email" class="form-control" type="text" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <input name="phone_number" class="form-control" type="text" placeholder="Phone">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Confirm Password">
+                                    <input name="password" class="form-control" type="text" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input name="password_confirmation" class="form-control" type="text" placeholder="Confirm Password">
                                 </div>
                                 <div class="form-group mb-0">
                                     <button class="btn btn-primary btn-block" type="submit">Register</button>
@@ -48,7 +52,7 @@
                             </div>
                             <!-- /Social Login -->
 
-                            <div class="text-center dont-have">Already have an account? <a href="login.html">Login</a></div>
+                            <div class="text-center dont-have">Already have an account? <a href="{{ route('admin.login') }}">Login</a></div>
                         </div>
                     </div>
                 </div>
