@@ -72,7 +72,7 @@
                                             </td>
                                             <td>
 {{--                                                <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
-                                                <a class="btn btn-sm btn-warning" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    <a edit_id="{{ $data -> id }}" class="btn btn-sm btn-warning edit_cat" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
                                                     <form class="d-inline" action="{{ route('category.destroy', $data -> id) }}" method="POST">
                                                         @csrf
@@ -114,6 +114,34 @@
                         <div class="form-group">
                             <label for="">Name</label>
                             <input name="name" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary btn-sm" type="submit" >
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="edit_category_modal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>Edit Category</h2>
+                    <hr>
+                    <form action="{{ route('category.update', 1) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input name="name" type="text" class="form-control">
+                            <input name="edit_id" type="hidden" class="form-control">
                         </div>
                         <div class="form-group">
                             <input class="btn btn-primary btn-sm" type="submit" >
