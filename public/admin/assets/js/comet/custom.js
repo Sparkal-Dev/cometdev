@@ -8,6 +8,7 @@
     });
 
 
+
     // Category Status
     $(document).on('click', 'input.cat_check', function(){
 
@@ -31,6 +32,22 @@
         }
 
     });
+
+
+    // Delete btn fix
+    $( '.delete-btn' ).click(function(){
+
+        let conf = confirm('Are  you sure ?');
+
+        if( conf == true ){
+            return true;
+        }else {
+            return false;
+        }
+
+    });
+
+
 
 
 })(jQuery)
