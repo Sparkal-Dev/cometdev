@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 
 
-//Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Frontend Controller
+Route::get('blog', [App\Http\Controllers\BlogPageController::class , 'showBlogPage']);
+
+
+
 
 // Admin template load
 Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'showAdminLoginForm']) -> name('admin.login');
