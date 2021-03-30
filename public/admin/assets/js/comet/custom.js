@@ -86,29 +86,13 @@
         // Post img load
         $('#post_img_select_g').change(function (e) {
 
-            let img_url_1 =  URL.createObjectURL(e.target.files[0]);
-            let img_url_2 =  URL.createObjectURL(e.target.files[1]);
-            let img_url_3 =  URL.createObjectURL(e.target.files[2]);
-            let img_url_4 =  URL.createObjectURL(e.target.files[3]);
-
-            if( img_url_1 != '' ) {
-                $('.post_img_load_1').attr('src', img_url_1);
+            let img_gall = '';
+            for(let i = 0; i < e.target.files.length ; i++){
+                let file_url = URL.createObjectURL(e.target.files[i]);
+                img_gall += '<img class="shadow" src="'+file_url+'">';
             }
 
-
-            if( img_url_2 != '' ){
-                $('.post_img_load_2').attr('src', img_url_2);
-            }
-
-            if( img_url_3 != '' ){
-                $('.post_img_load_3').attr('src', img_url_3);
-            }
-
-
-            if( img_url_4 != '' ){
-                $('.post_img_load_4').attr('src', img_url_4);
-            }
-
+            $('.post-gallery-img').html(img_gall);
 
 
         });
@@ -139,6 +123,12 @@
                 $('.post-video').show();
             }else {
                 $('.post-video').hide();
+            }
+
+            if( format == 'Audio' ){
+                $('.post-audio').show();
+            }else {
+                $('.post-audio').hide();
             }
 
         });

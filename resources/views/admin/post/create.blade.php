@@ -29,19 +29,20 @@
                 <!-- /Page Header -->
 
                 <div class="row">
+                    @include('validate')
                     <div class="col-lg-12 d-flex">
                         <div class="card flex-fill">
                             <div class="card-header">
                                 <h4 class="card-title">Add new Post</h4>
                             </div>
                             <div class="card-body">
-                                <form action="#">
-
+                                <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Post Format</label>
                                         <div class="col-lg-9">
-                                            <select class="form-control" name="" id="post_format">
+                                            <select class="form-control" name="post_type" id="post_format">
                                                 <option value="">-Select-</option>
                                                 <option value="Image">Image</option>
                                                 <option value="Gallery">Gallery</option>
@@ -54,7 +55,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Post title</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control">
+                                            <input type="text" name="title" class="form-control">
                                         </div>
                                     </div>
 
@@ -77,7 +78,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Tags</label>
                                         <div class="col-lg-9">
-                                            <select style="width: 100%;" name=""  class="post_tag_select" multiple="multiple">
+                                            <select style="width: 100%;" name="tag[]"  class="post_tag_select" multiple="multiple">
                                                 @foreach($all_tag as $tag)
                                                 <option value="{{ $tag -> id }}">{{ $tag -> name }}</option>
                                                 @endforeach
@@ -91,7 +92,7 @@
                                             <div class="col-lg-9">
                                                 <img style="width:400px;" class="post_img_load" src="" alt=""> <br> <br>
                                                 <label for="post_img_select"><img style="width:100px; cursor:pointer;" src="{{ URL::to('admin/assets/img/img.jpg') }}" alt=""></label>
-                                                <input style="display:none" type="file" id="post_img_select">
+                                                <input style="display:none" name="image" type="file" id="post_img_select">
                                             </div>
                                         </div>
                                     </div>
@@ -100,16 +101,12 @@
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Post Gallery Image</label>
                                             <div class="col-lg-9">
-                                                <img style="width:200px;" class="post_img_load_1" src="" alt="">
-                                                <img style="width:200px;" class="post_img_load_2" src="" alt="">
-                                                <img style="width:200px;" class="post_img_load_3" src="" alt="">
-                                                <img style="width:200px;" class="post_img_load_4" src="" alt="">
-
+                                                 <div class="post-gallery-img"></div>
                                                 <br>
                                                 <br>
 
                                                 <label for="post_img_select_g"><img style="width:100px; cursor:pointer;" src="{{ URL::to('admin/assets/img/img.jpg') }}" alt=""></label>
-                                                <input style="display:none" name="post-gall[]" type="file" id="post_img_select_g" multiple>
+                                                <input style="display:none" name="post_gall[]" type="file" id="post_img_select_g" multiple>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +115,7 @@
                                         <div class="form-group  row">
                                             <label class="col-lg-3 col-form-label">Post Video Link</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control">
+                                                <input name="video" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +124,7 @@
                                         <div class="form-group row">
                                             <label class="col-lg-3 col-form-label">Post Audio Link</label>
                                             <div class="col-lg-9">
-                                                <input type="text" class="form-control">
+                                                <input name="audio" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +133,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Content</label>
                                         <div class="col-lg-9">
-                                            <textarea id="post_editor"></textarea>
+                                            <textarea name="content" id="post_editor"></textarea>
                                         </div>
                                     </div>
 

@@ -41,7 +41,10 @@
                         <br>
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Tags</h4>
+                                <h4 class="card-title">All Posts (Published)</h4>
+                                <a class="badge badge-primary" href="{{ route('post.index') }}">Published {{ ($published == 0 ? '' : $published) }}</a>
+                                <a class="badge badge-danger" href="{{ route('post.trash') }}">Trash {{ ($trash == 0 ? '' : $trash) }}</a>
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -49,8 +52,10 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Tag Name</th>
-                                            <th>Tag Slug</th>
+                                            <th>Title</th>
+                                            <th>Post Type</th>
+                                            <th>Post  Category</th>
+                                            <th>Post  Tag</th>
                                             <th>Time</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -59,10 +64,17 @@
                                         <tbody>
 
                                         @foreach( $all_data as $data )
+
+                                            @php
+                                                $featured_data = json_decode($data -> featured);
+                                            @endphp
+
                                             <tr>
                                                 <td>{{ $loop -> index + 1 }}</td>
-                                                <td>{{ $data -> name }}</td>
-                                                <td>{{ $data -> slug }}</td>
+                                                <td>{{ $data -> title }}</td>
+                                                <td>{{ $featured_data -> post_type  }}</td>
+                                                <td>{{ $featured_data -> post_type  }}</td>
+                                                <td>{{ $featured_data -> post_type  }}</td>
                                                 <td> {{ $data -> created_at -> diffForHumans() }}</td>
                                                 <td>
                                                     <div class="status-toggle">
@@ -73,12 +85,8 @@
                                                 <td>
                                                     {{--                                                <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
                                                     <a edit_id="{{ $data -> id }}" class="btn btn-sm btn-warning edit_cat" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    <a class="btn btn-sm btn-danger" href="{{ route('post.trash.update', $data -> id ) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
 
-                                                    <form class="d-inline" action="{{ route('category.destroy', $data -> id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                                    </form>
 
                                                 </td>
                                             </tr>
