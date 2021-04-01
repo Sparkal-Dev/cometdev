@@ -53,6 +53,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
+                                            <th>Author</th>
                                             <th>Post Type</th>
                                             <th>Post  Category</th>
                                             <th>Post  Tag</th>
@@ -72,8 +73,15 @@
                                             <tr>
                                                 <td>{{ $loop -> index + 1 }}</td>
                                                 <td>{{ $data -> title }}</td>
+                                                <td>{{ $data  -> user -> name }}</td>
                                                 <td>{{ $featured_data -> post_type  }}</td>
-                                                <td>{{ $featured_data -> post_type  }}</td>
+                                                <td>
+                                                    <ul>
+                                                    @foreach( $data -> categories as $cat )
+                                                            <li>{{ $cat -> name }}</li>
+                                                    @endforeach
+                                                    </ul>
+                                                </td>
                                                 <td>{{ $featured_data -> post_type  }}</td>
                                                 <td> {{ $data -> created_at -> diffForHumans() }}</td>
                                                 <td>

@@ -23,7 +23,11 @@
                         <article class="post-single">
                             <div class="post-info">
                                 <h2><a href="#">{{ $post -> title }}</a></h2>
-                                <h6 class="upper"><span>By</span><a href="#"> Admin</a><span class="dot"></span><span>{{ date('d F, Y', strtotime($post -> created_at) ) }}</span><span class="dot"></span><a href="#" class="post-tag">Startups</a></h6>
+                                <h6 class="upper"><span>By</span><a href=""> {{ $post -> user -> name }}</a><span class="dot"></span><span>{{ date('d F, Y', strtotime($post -> created_at) ) }}</span><span class="dot"></span>
+
+                                    <a href="#" class="post-tag">Rajniti</a>,
+
+                                </h6>
                             </div>
 
 

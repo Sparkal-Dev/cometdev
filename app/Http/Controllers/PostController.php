@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -95,6 +96,7 @@ class PostController extends Controller
 
 
 
+
        $this -> validate($request, [
            'title'      => 'required',
            'content'      => 'required',
@@ -134,12 +136,15 @@ class PostController extends Controller
         ];
 
 
-       Post::create([
+       $post_data = Post::create([
         'title'             => $request -> title,
+        'user_id'           => Auth::user() -> id,
         'slug'              => Str::slug($request -> title),
         'featured'          => json_encode($post_featured),
         'content'           => $request -> content,
        ]);
+
+       $post_data -> categories() -> attach($request -> cat);
 
        return redirect() -> back() -> with('success', 'Post added successful !');
 
