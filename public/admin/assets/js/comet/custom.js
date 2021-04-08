@@ -135,6 +135,12 @@
 
 
 
+        // Admin dash menu manage
+        $('#sidebar-menu ul li ul li.ok').parent('ul').slideDown();
+        $('#sidebar-menu ul li ul li.ok a').css('color', '#5ae8ff');
+        $('#sidebar-menu ul li ul li.ok').parent('ul').parent('li').children('a').css('background-color', '#19c1dc');
+        $('#sidebar-menu ul li ul li.ok').parent('ul').parent('li').children('a').addClass('subdrop');
+
 
     });
 })(jQuery)
