@@ -11,6 +11,9 @@
                 </li>
 
 
+
+
+
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Blog </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -20,6 +23,10 @@
                         <li class="{{ (Route::currentRouteName() == 'tag.index') ? 'ok' : '' }}"><a href="{{ route('tag.index') }}"> Tag</a></li>
                     </ul>
                 </li>
+
+
+
+
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Orders </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -65,7 +72,6 @@
                 </li>
 
 
-                {{ Route::currentRouteName() }}
 
             </ul>
         </div>

@@ -82,7 +82,13 @@
                                                     @endforeach
                                                     </ul>
                                                 </td>
-                                                <td>{{ $featured_data -> post_type  }}</td>
+                                                <td>
+                                                    <ul>
+                                                        @foreach( $data -> tags as $tag )
+                                                            <li>{{ $tag -> name }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
                                                 <td> {{ $data -> created_at -> diffForHumans() }}</td>
                                                 <td>
                                                     <div class="status-toggle">

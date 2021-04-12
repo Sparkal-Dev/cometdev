@@ -21,7 +21,9 @@ Route::get('/', function () {
 
 // Frontend Controller
 Route::get('blog', [App\Http\Controllers\BlogPageController::class , 'showBlogPage']);
-
+// Blog Search
+Route::post('blog', 'App\Http\Controllers\BlogPageController@blogSearch') -> name('post.search');
+Route::get('blog/category/{slug}', 'App\Http\Controllers\BlogPageController@blogSearchByCat') -> name('post.cat.search');
 
 
 
@@ -48,9 +50,11 @@ Route::resource('category' , 'App\Http\Controllers\CategoryController');
 Route::get('category/status-inactive/{id}' , 'App\Http\Controllers\CategoryController@statusUpdateInactive');
 Route::get('category/status-active/{id}' , 'App\Http\Controllers\CategoryController@statusUpdateActive');
 
-
-
-
 // Post Tag Route
 Route::resource('tag' , 'App\Http\Controllers\TagController');
+
+
+
+
+
 

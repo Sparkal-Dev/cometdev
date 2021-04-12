@@ -22,4 +22,17 @@ class Post extends Model
         return $this -> belongsToMany('App\Models\Category');
     }
 
+
+
+    public function tags(){
+        return $this -> belongsToMany('App\Models\Tag');
+    }
+
+
+
+
+
+
+
+
 }

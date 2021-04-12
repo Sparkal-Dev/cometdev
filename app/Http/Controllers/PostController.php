@@ -145,6 +145,7 @@ class PostController extends Controller
        ]);
 
        $post_data -> categories() -> attach($request -> cat);
+       $post_data -> tags() -> attach($request -> tag);
 
        return redirect() -> back() -> with('success', 'Post added successful !');
 
