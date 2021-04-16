@@ -56,6 +56,16 @@ class BlogPageController extends Controller
 
     }
 
+    /**
+     * Show Single Blog
+     */
+    public function blogSingle($slug){
+
+        $single_post = Post::where('slug', $slug) -> first();
+
+        return view('comet.blog-single', compact('single_post'));
+    }
+
 
 
 
