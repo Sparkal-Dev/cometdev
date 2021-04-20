@@ -62,9 +62,26 @@ class BlogPageController extends Controller
     public function blogSingle($slug){
 
         $single_post = Post::where('slug', $slug) -> first();
-
+        $this -> viewCount($single_post -> id);
         return view('comet.blog-single', compact('single_post'));
+
+
     }
+
+    /**
+     * Post view count
+     */
+    private function viewCount($post_id){
+        // Post view count
+        $post_view_count = Post::find($post_id);
+        $old_views = $post_view_count -> views;
+        $post_view_count -> views = $old_views + 1 ;
+        $post_view_count -> update();
+    }
+
+
+
+
 
 
 

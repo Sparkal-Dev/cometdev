@@ -126,12 +126,11 @@ class PostController extends Controller
 
 
 
-
         $post_featured = [
             'post_type'          => $request -> post_type,
             'post_image'         => $unique_file_name,
             'post_gallery'       => $gall_images,
-            'post_video'         => str_replace('watch?v=', 'embed/', $request -> video),
+            'post_video'         => $this -> getEmbed($request -> video),
             'post_audio'         => $request -> audio,
         ];
 
@@ -139,7 +138,7 @@ class PostController extends Controller
        $post_data = Post::create([
         'title'             => $request -> title,
         'user_id'           => Auth::user() -> id,
-        'slug'              => str_replace(' ', '-', $request -> title),
+        'slug'              =>  $this -> getSlug($request -> title),
         'featured'          => json_encode($post_featured),
         'content'           => $request -> content,
        ]);

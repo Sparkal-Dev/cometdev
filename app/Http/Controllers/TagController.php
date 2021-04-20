@@ -46,7 +46,7 @@ class TagController extends Controller
 
         Tag::create([
             'name'      => $request -> name,
-            'slug'      => Str::slug($request -> name),
+            'slug'      => $this -> getSlug($request -> name),
         ]);
 
         return redirect() -> route('tag.index') -> with('success', 'Tag added successful');
